@@ -19,8 +19,11 @@ RUN wget -q https://apt.puppetlabs.com/puppetlabs-release-pc1-jessie.deb -O /tmp
 RUN apt-get -y autoremove --purge \
     && apt-get -y autoclean
 
-VOLUME ["/etc/puppetlabs"]
+VOLUME ["/var/log/puppetlabs"]
 
 EXPOSE 8140
 
-ENTRYPOINT [ "/opt/puppetlabs/bin/puppet", "resource", "service", "puppetserver", "ensure=running", "enable=true" ]
+COPY entrypoint.sh /usr/local/bin/
+RUN chmod +x /usr/local/bin/entrypoint.sh
+RUN ln -s /usr/local/bin/entrypoint.sh /entrypoint.sh
+CMD entrypoint.sh
