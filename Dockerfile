@@ -16,14 +16,16 @@ RUN wget -q https://apt.puppetlabs.com/puppetlabs-release-pc1-jessie.deb -O /tmp
     apt-get -y install puppetserver
 
 # Cleanup
-RUN apt-get -y autoremove --purge \
-    && apt-get -y autoclean
+RUN apt-get -y autoremove --purge && \
+    apt-get -y autoclean
 
-VOLUME ["/var/log/puppetlabs"]
+VOLUME [ "/var/log/puppetlabs", "/etc/puppetlabs/code" ]
 
 EXPOSE 8140
 
 COPY entrypoint.sh /usr/local/bin/
-RUN chmod +x /usr/local/bin/entrypoint.sh
-RUN ln -s /usr/local/bin/entrypoint.sh /entrypoint.sh
+
+RUN chmod +x /usr/local/bin/entrypoint.sh && \
+    ln -s /usr/local/bin/entrypoint.sh /entrypoint.sh
+
 CMD entrypoint.sh
