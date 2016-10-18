@@ -2,6 +2,7 @@
 
 set -e
 
+chmod 750 /var/log/puppetlabs/puppetserver
 touch /var/log/puppetlabs/puppetserver/puppetserver.log
 chmod 640 /var/log/puppetlabs/puppetserver/puppetserver.log
 chown puppet:puppet /var/log/puppetlabs/puppetserver/puppetserver.log
