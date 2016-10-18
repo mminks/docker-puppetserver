@@ -10,6 +10,7 @@ Let's create necessary directories:
 
 ```
 mkdir -p /opt/puppetlabs/logs/puppetserver
+mkdir -p /opt/puppetlabs/code
 ```
 
 Choose target directories of your choice.
@@ -28,6 +29,7 @@ docker run \
   -e XMX="2g" \
   -p 8140:8140 \
   -v /opt/puppetlabs/logs:/var/log/puppetlabs \
+  -v /opt/puppetlabs/code:/etc/puppetlabs/code \
   mminks/docker-puppetserver
 ```
 
