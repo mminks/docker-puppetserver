@@ -13,6 +13,7 @@ mkdir -p /opt/puppetlabs/logs/puppetserver
 mkdir -p /opt/puppetlabs/code
 ```
 
+
 Choose target directories of your choice.
 
 ## Environment
@@ -32,6 +33,7 @@ docker run \
   -v /opt/puppetlabs/code:/etc/puppetlabs/code \
   mminks/docker-puppetserver
 ```
+
 
 You can skip "-e XMS" and/or "-e XMX" if defaults are fine for you.
 

@@ -21,7 +21,4 @@ then
   sed -ri -e "s/(-Xmx.*)/-Xmx$XMX\"/g" /etc/default/puppetserver
 fi
 
-/opt/puppetlabs/bin/puppet resource service puppetserver ensure=running enable=true &>/dev/null &
-
-# show logs on default console
-exec /usr/bin/tail -f /var/log/puppetlabs/puppetserver/puppetserver.log
+exec /opt/puppetlabs/server/bin/puppetserver foreground
