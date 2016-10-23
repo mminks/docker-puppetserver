@@ -22,4 +22,4 @@ then
   sed -ri -e "s/(-Xmx.*)/-Xmx$XMX\"/g" /etc/default/puppetserver
 fi
 
-exec /opt/puppetlabs/server/bin/puppetserver foreground
+exec /opt/puppetlabs/bin/puppet master --no-daemonize --verbose
